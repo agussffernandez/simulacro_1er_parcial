@@ -57,6 +57,25 @@ def ordenar_inventario(inventario: list) -> list:
     return inventario
 
 
+
+def mostrar_producto_mas_caro(inventario: list) -> list:
+    """
+    Muestra el producto con el precio mas caro del inventario
+    """
+    if not inventario: #Verifica si el inventario está vacio
+        print("El inventario esta vacío")
+        return
+    
+    producto_mas_caro = inventario[0] # Inicializo con el primer producto
+    
+    for i in range(1, len(inventario)): # comienzo desde el segundo elemento
+        if inventario[i][1] > producto_mas_caro[1]:
+            producto_mas_caro = inventario[i]
+    print(producto_mas_caro)
+
+
+
+
 def menu_principal():
     
     inventario = []
@@ -77,9 +96,14 @@ def menu_principal():
         elif opcion == 3:
             ordenar_inventario(inventario)
         
+        elif opcion == 4:
+            mostrar_menu_principal(inventario)
+        
         opcion = int(input("Elija una opción del 1 al 6: "))
     
     print(inventario)
+
+
 
 
 menu_principal()
