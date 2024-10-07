@@ -37,7 +37,24 @@ def buscar_producto(inventario: list) -> list|None:
     return None
 
 
-
+def ordenar_inventario(inventario: list) -> list:
+    """ 
+    Ordenar los productos en función de su precio de manera ascendente y luego mostrar por pantalla los productos ordenados.
+    """
+    longitud = len(inventario)
+    
+    # Implementación de Bubble Sort:
+    # Compara dos elementos adyacentes. Si el primer elemento es mayor que el segundo (en caso de orden ascendente), se intercambian.
+    for i in range(longitud):
+        for j in range(0, longitud-i-1):
+            if inventario[j][1] > inventario[j+1][1]:  # Comparar precios
+                # Intercambiar si el elemento encontrado es mayor que el siguiente
+                temporal = inventario[j+1]
+                inventario[j+1] = inventario[j]
+                inventario[j] = temporal
+    print("El inventario ordenado por precio es: ")
+    print(inventario)
+    return inventario
 
 
 def menu_principal():
@@ -54,6 +71,11 @@ def menu_principal():
         if opcion == 1:
             cargar_inventario(inventario)
         
+        elif opcion == 2:
+            buscar_producto(inventario)
+        
+        elif opcion == 3:
+            ordenar_inventario(inventario)
         
         opcion = int(input("Elija una opción del 1 al 6: "))
     
